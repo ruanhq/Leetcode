@@ -6,6 +6,7 @@ SELECT event_type, avg(occurences) AS AVG_OCCUR
 FROM Events GROUP BY event_type
 )
 SELECT EE.business_id
+
 FROM events AS EE
 JOIN T1 
 ON 
