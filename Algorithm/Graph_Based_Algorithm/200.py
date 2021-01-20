@@ -1,4 +1,5 @@
 #200. Number of Islands
+#Depth First Search:
 class Solution:
 	def numIslands(self, grid: List[List[str]]) -> int:
 		if len(grid) == 0:
@@ -25,3 +26,5 @@ class Solution:
 					graph_searching(grid, i, j)
 					count += 1
 	    return count
+
+
