@@ -9,3 +9,4 @@ SELECT person1, person2, count(*) AS call_count, sum(duration) AS total_duration
 FROM A1
 GROUP BY person1, person2
 ORDER BY person1, person2;
+#union all allows duplicates values, is preferred when we want to count all the sessions.
