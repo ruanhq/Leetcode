@@ -13,3 +13,4 @@ WHERE id IN (
     AND t1.rank_date - t2.rank_date = 4
     AND t1.id = t2.id)
 ORDER BY 1
+
