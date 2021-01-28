@@ -6,3 +6,9 @@ SELECT DISTINCT s.value AS ids
 FROM seq s, Customers c
 WHERE s.value not in (SELECT customer_id FROM Customers)
 ORDER BY 1 ASC;
+
+
+#Generate the consecutive sequence here:
+WITH recuresive SEQ AS (
+SELECT 1 AS value UNION ALL SELECT value + 1 FROM SEQ WHERE value < (SELECT MAX(customer_id) FROM Customers)
+)
