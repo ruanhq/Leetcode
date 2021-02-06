@@ -1,7 +1,7 @@
-1747. Leetflex Banned Accounts:
-select
-distinct a.account_id
-from LogInfo a, LogInfo b
-where a.login between (b.login) and (b.logout)
-and a.account_id = b.account_id
-and a.ip_address !=b.ip_address
+#1747. Leetflex Banned Accounts:
+SELECT A.account_id AS account_id FROM 
+LogInfo A, LogInfo B
+WHERE 
+A.login BETWEEN B.login AND B.logout
+AND A.account_id = B.account_id
+AND A.ip_address != B.ip_address;
