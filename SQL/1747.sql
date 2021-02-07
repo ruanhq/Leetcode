@@ -5,3 +5,8 @@ WHERE
 A.login BETWEEN B.login AND B.logout
 AND A.account_id = B.account_id
 AND A.ip_address != B.ip_address;
+
+
+
+
+
