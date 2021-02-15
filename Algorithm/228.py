@@ -11,8 +11,3 @@ class Solution:
     			pointer = i + 1
     	return result
 
-    	for i, j in enumerate(nums):
-    		if i == len(nums) - 1 or 
-    		nums[i + 1] - nums[i] > 1
-    		result.append(str(nums[pointer])) +
-    		'->' + str(j)
