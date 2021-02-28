@@ -24,3 +24,6 @@ def numIslands(self, grid: List[List[str]]) -> int:
 				graph_searching(grid, i, j)
 				count += 1
 	return count
+
+
+
