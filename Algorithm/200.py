@@ -17,7 +17,6 @@ def numIslands(self, grid: List[List[str]]) -> int:
 			graph_searching(grid, x, y - 1)
 		if y != n - 1:
 			graph_searching(grid, x, y + 1)
-
 	for i in range(m):
 		for j in range(n):
 			if grid[i][j] == '1':
@@ -27,3 +26,9 @@ def numIslands(self, grid: List[List[str]]) -> int:
 
 
 
+#O(n^2), O(n^2), O(n^2)
+
+
+#微软,京东,facebook,谷歌,苹果,亚马逊
+#wish, microsoft, google, apple, amazon, facebook, 
+#Microsoft, JD.com, facebook, google, apple, amazon, wish

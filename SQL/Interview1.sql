@@ -140,6 +140,57 @@ group by 1;
 
 
 #How to detect spam review?
+#comment distribution:
+#content_id, content_type(comment/post), target_id
+#if comment, target_id就是post的id，如果是post则target_id为NULL
+#求comment的distribution:
+
+select num_comments, count(post_id) as num_posts
+from
+(
+select target_id as post_id, count(*) as num_comments
+from table where content_type = 'comment'
+group by 1
+) as T1 
+group by 1;
+#Calculate the distribution of comment:
+#why not distinct here?
+select num_comments, count(distinct post_id) as num_posts
+from(
+  select target_id as post_id, count(*) as num_comments
+  from table 
+  where content_type = 'comment'
+  group by target_id 
+) T1 
+group by 1;
+
+#Post type distribution: content_action: 
+#user_id(content_creator_id)
+#content_id
+#content_type
+#target_id(original content_id -> comment)
+#(1) distribution of stories
+#(2) content_type
+#poisson distribution -> binomial distribution
+#right skewed normal in the second day: 
+#We take all the people who share 2 pages in day 1,
+#what can be their distribution of page sharing in day 2:
+#mixture of normal and a point mass at 0
+#should be log-normal -> exponential nature of comments -> log of the # of comments may well follow normal distribution.
+#
+
+
+
+#select count(distinct ad_account)
+#from table where date = curdate() and status = 'fraud';
+
+
+
+
+
+
+
+
 
 
 
