@@ -1,4 +1,5 @@
 #238. Product of array except self:
+#using the placeholder to store the number here.
 #Get two documentary array where 
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
@@ -14,6 +15,9 @@ class Solution:
             result[i] = L[i] * R[i]
         return result
 #total ads revenue -> # active users * CTR * price 
+
+
+
 
 
 
