@@ -186,10 +186,46 @@ group by 1;
 
 
 
+#Table 1: adv_info: advertiser_id | ad_id | spend
+#Table 2: ad_info: ad_id | user_id | price (assume all price column > 0):
+#fraction of advertiser has at least one conversion:
+#每个advertiser的平均ROI:
+select count(distinct advertiser_id) / (select count(distinct advertiser_id) from adv_info)
+from adv_info A 
+inner join 
+ad_info on ad_info.ad_id = adv_info.ad_id;
+
+select a.advertiser_id, a.ad_id, sum(ifnull(b.price, 0))/a.spend as ad_roi
+from adv_info A
+inner join 
+ad_info B on A.ad_id = B.ad_id
+group by 1, 2;
+
+#session table:
+#date | sessionid |s userid | action 
+from session where datediff(curdate(), date) <= 30
+#Time table:
+#date | sessionid | time_spent
+select date, count(distinct sessionid)/count(distinct userid) as averageNum
+group by date
+
+#the time distribution of each user:
+select userTotalTime, count(Distinct user_id) as distributionOfTotalTime
+from 
+(select user_id, sum(ifnull(time_spent, 0)) as userTotalTime
+from Time T 
+inner join session S on 
+S.sessionid = T.sessionid and S.date = T.date
+group by 1
+) as A1 
+group by 1
+order by 1;
 
 
 
 
+hashMap = {}
+hashMap[0] = 7
 
 
 
