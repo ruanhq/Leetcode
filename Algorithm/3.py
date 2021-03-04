@@ -14,3 +14,7 @@ class Solution:
         	result = max(result, j - i + 1)
         	hashMap[s[j]] = j + 1
         return result
+
+
+
+

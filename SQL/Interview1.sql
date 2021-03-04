@@ -227,6 +227,62 @@ order by 1;
 hashMap = {}
 hashMap[0] = 7
 
+#request table - (sender_id, send_to_id, time)
+#accept table - (requester_id, accepter_id, time)
+
+select count(distinct a.request_id)/count(distinct r.sender_id) as acceptance_rate
+from request r, accept a 
+where date(r.time) = "XXX" and date(a.time) = "XXX"
+
+select count(distinct t2.request_id)/ count(t1.sender_id) as acceptance_rate
+from (
+select distinct sender_id, send_to_id
+from request where date(time) = "XXX"
+) T1,
+(
+select distinct requester_id, acceptance_id
+from accept where date(time) = "XXX"
+) T2
+
+
+select user_id, sum(num_friends) as num_friends
+from 
+(select requester_id as user_id, count(distinct accepter_id) as num_friends
+from accept 
+group by requester_id
+UNION ALL 
+select accepter_id as user_id, count(distinct requester_id) as num_friends
+from accept 
+group by accepter_id) T1
+group by user_id
+order by num_friends desc
+limit 1;
+
+metrics, AAREM -> AAREM?
+datediff(curdate(), date) <= 30
+date(R.time) = "XXX"
+t1.user_id, t1.unit_id
+
+#ad4ad: date, user_id, event(impression, click, create_ad),
+#unit_id, cost, spend
+#users: user_id, country, age
+select country, sum(ifnull(spend, 0)) as total_spend
+from users U 
+left join 
+ad4ad A 
+USING(user_id)
+where datediff(curdate(), date) <= 30
+group by country;
+
+select country, sum(ifnull(spend, 0)) as total_spend
+from users U 
+left join 
+ad4ad A 
+USING(user_id)
+where datediff(curdate(), date) <= 30
+group by country;
+
+defaultdict(list) -> d[k].append(v):
 
 
 
