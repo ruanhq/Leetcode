@@ -15,12 +15,6 @@ class Solution:
   	  else:
   	  	hashmaps[s] = 1
   	return count
-#hashmaps[s-k] -> where they start from -> continuous numbers of the sum.
-#s-k in hashmaps:
-#count += hashmaps[s-k]
-#if s in hashmaps:
-#then 
-
 
 
 
