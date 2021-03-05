@@ -12,3 +12,9 @@ class Solution:
   		else:
   			False
   	return not stack
+
+
+
+
+
+
