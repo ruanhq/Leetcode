@@ -285,7 +285,42 @@ group by country;
 defaultdict(list) -> d[k].append(v):
 
 
+#ad_id 
+select avg(tot_spend) as avg_advsr_spnt
+from 
+(
+select adverstiser_id, sum(spend) as tot_spend
+from adv_info 
+group by 1
+) A 
+#negative binomial/ log-normal
 
+adv_info: advertiser_id | ad_id | spend  -> each advertiser_id represent an ad.
+ad_info: ad_id | user_id | price 
+
+#Fraction of advertisers who has at least 1 conversion:
+select
+      count(distinct advertiser_id)/(select 
+      	count(distinct advertiser_id) from adv_info)
+      from adv_info JOIN ad_info ON 
+      adv_info.ad_id = ad_info.ad_id;
+
+#
+select t1.advertiser_id, t1.ad_id, sum(ifnull(T2.price, 0))/t1.spend as roi_adv
+from adv_info t1 left join ad_info t2 on t1.ad_id = t2.ad_id 
+group by 1, 2;
+
+#average roi for each advertisement:
+select A1.advertiser_id, ROUND(IFNULL(A2.total_price/ A1.total_spend, 0), 2) as advROI
+FROM
+(select advertiser_id, sum(ifnull(spend, 0)) as total_spend
+from adv_info group by 1) as A1
+left join
+(select advertiser_id, sum(ifnull(price, 0)) as total_price
+from adv_info left join ad_info on
+adv_info.ad_id = ad_info.ad_id) as A2 
+on
+A1.advertiser_id = A2.advertiser_id
 
 
 
