@@ -8,6 +8,7 @@ class Solution:
 			L1 = getDepth(node.left)
 			R1 = getDepth(node.right)
 			self.diameter = max(self.diameter, L1 + R1)
-			return max(L1, R1) + 1
 		result = getDepth(root)
 		return self.diameter
+
+
