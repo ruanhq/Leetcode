@@ -2,6 +2,7 @@
 class Solution:
 	def addBinary(self, a: str, b: str) -> str:
 		result = ""
+		#utilize a carryover point:
 		carryover = 0
 		listA = list(a)
 		listB = list(b)
@@ -12,4 +13,4 @@ class Solution:
 				carryover += int(listB.pop())
 			result += str(carryover % 2)
 			carryover //= 2
-		return result
+		return result[::-1]
