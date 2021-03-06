@@ -1,12 +1,15 @@
-#811.
-class Solution(object):
-    def subdomainVisits(self, cpdomains):
-        ans = collections.Counter()
-        for domain in cpdomains:
-            count, domain = domain.split()
-            count = int(count)
-            frags = domain.split('.')
-            for i in xrange(len(frags)):
-                ans[".".join(frags[i:])] += count
+#811.py
+class Solution:
+  def subdomainVisits(self, cpdomains: List[str]) -> List[str]:
+    result = collections.Counter()
+    for dom in cpdomains:
+      cur_count, domain = dom.split()
+      cur_count = int(cur_count)
+      fract = domain.split('.')
+      for i in range(len(fract)):
+      	result['.'.join(fract[i:])] += cur_count
+    return ["{}{}".format(c1, c2) for c2, c1 in result.items()]
 
-        return ["{} {}".format(ct, dom) for dom, ct in ans.items()]
+
+
+

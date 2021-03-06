@@ -12,7 +12,7 @@ table2: user: userid | date| country |dau_flag{0, 1}
 
 SELECT country,
 ROUND(IFNULL(SUM(CASE WHEN event = 'post' THEN 1
-ELSE 0 END)/COUNT(DISTINCT U.user_id), 0), 2) AS avg_posts)
+ELSE 0 END)/COUNT(DISTINCT U.user_id), 0), 2) AS avg_posts
 FROM
 user U LEFT JOIN Composer C
 ON U.userid = C.userid AND U.date = C.date
@@ -20,9 +20,10 @@ WHERE date = CURDATE() AND U.dau_flag = 1
 GROUP BY country;
 
 
-SELECT country,
-ROUND(IFNULL(s))
-
+select country, round(ifnull(sum( case when event = 'post' then 1 else 0 end)/count(distinct U.user_id), 0), 2)
+ as avg_posts
+round(ifnull(A/B, 0), 2)
+round(ifnull(A/B, 0), 2)
 #ds(date, String) | user_id | post_id | action ('view', 'like', 'reaction', '') | extra(extra reason for the action, e.g. 'love', 'spam', 'nudity')
 #Table: user_actions:
 
@@ -125,7 +126,6 @@ select request_id as user_id, accepter_id as applier_id
 #intensive usage of window functions:
 #date, country, cell_number, carrier, type
 #date, cell_number
-datediff(curdate(), date) = 1
 
 select country, count(*)
 from sms_message
@@ -321,10 +321,15 @@ from adv_info left join ad_info on
 adv_info.ad_id = ad_info.ad_id) as A2 
 on
 A1.advertiser_id = A2.advertiser_id
+select count(distinct advertiser_id)/
+(select count(distinct advertiser_id) from adv_info)
+from adv_info join ad_info on 
+adv_info.ad_id = ad_info.ad_id;
 
 
-
-
+select count(distinct a.request_id)/count(distinct r.sender_id) as acceptance_rate
+from request r, accept a 
+where date(r.time) = "XXX" and date(a.time) = "XXX";
 
 
 
