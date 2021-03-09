@@ -40,6 +40,18 @@ stack.extend(["A6", "A7"])
 stack
 
 
+class Solution:
+	def invertTreeMethod3(self, root: TreeNode) -> TreeNode:
+		stack = [root]
+		while stack:
+			node = stack.pop()
+			if node:
+				node.left, node.right = node.right, node.left
+				stack.append(node.left)
+				stack.append(node.right)
+		return root
+
+
 
 
 

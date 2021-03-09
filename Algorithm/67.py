@@ -14,3 +14,4 @@ class Solution:
 			result += str(carryover % 2)
 			carryover //= 2
 		return result[::-1]
+
