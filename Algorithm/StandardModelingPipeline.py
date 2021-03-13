@@ -3,6 +3,7 @@ import lightgbm as lgbm
 import xgboost as xgb 
 from sklearn.model_selection import StratifiedKFold
 
+#Calculate the Gini Index which is equivalent to 2 * AUROC - 1
 def eval_giniIndex(y_true, y_pred):
   assert y_true.shape == y_pred.shape
   n_sample = y_true.shape[0]
@@ -25,6 +26,7 @@ def gini_xgb(preds, dtrain):
   labels = dtrain.get_label()
   return 'gini', eval_gini(labels, preds)
 
+#You need to input the parameter lists:
 def ModelingPipeline(X, y, eval_Methodology = "AUC", nfolds = 5, modelUse: "LightGBM", params):
   foldSplit = StratifiedKFold(n_splits = nfolds, shuffle = True, randomstate = 1994)
   oof_valid_pred = np.zeros(X.shape[0])

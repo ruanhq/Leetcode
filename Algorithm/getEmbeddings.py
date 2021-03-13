@@ -34,7 +34,7 @@ for word, i in word_index.items():
     embedding_vector = embeddings_index.get(word)
     if embedding_vector is not None: embedding_matrix[i] = embedding_vector
 
-#
+#######
 maxlen = 300
 #maximum number of words utilized
 max_features = 40000 

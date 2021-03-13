@@ -17,7 +17,6 @@ def drawingQuantitativeResponseVersusCategoricalFeature(df, responseVariable = "
   fig.axis(ymin = 0, ymax = max(df[responseVariable] * 1.05))
   plt.xticks(rotation = 60)
 
-
 #HeatmapStyleDrawing For highly correlated features:
 def drawingCorrelationHeatmap(df, responseVariable = "label", numberOfFeaturesPlot = 10):
   corrMat = df.corr()
@@ -29,7 +28,6 @@ def drawingCorrelationHeatmap(df, responseVariable = "label", numberOfFeaturesPl
   annot_kws = {'size': 14}, yticklabels = colsToDraw.values, xticklabels = colsToDraw.values)
   plt.show()
 
-
 #Plot the relationship Between Quantitative Variable vs Quantitative Variable, three plots each line:
 def drawingCorrelationQuantitative(df, responseVariable = "label", featureToAnalysis):
   fig, ax = subplots(round(len(featureToAnalysis) / 3), 3, figsize = (21, 14))
@@ -37,7 +35,6 @@ def drawingCorrelationQuantitative(df, responseVariable = "label", featureToAnal
   	if i < len(featureToAnalysis) - 1:
   		sns.regplot(x = featureToAnalysis[i], y = responseVariable, data = df[featureToAnalysis], ax = ax)
   plt.show()
-
 
 #Calculate the gini-index from scratch:
 def giniIndexEvaluation(y_true, y_pred):
@@ -51,10 +48,6 @@ def giniIndexEvaluation(y_true, y_pred):
   L_true = np.cumsum(true_order)/ np.cumsum(true_order)
   G_true = np.sum(L_mid - L_true)
   return G_pred/ G_true
-
-
-
-
 
 
 
