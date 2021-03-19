@@ -58,6 +58,15 @@ def ModelingPipeline(X, y, eval_Methodology = "AUC", nfolds = 5, modelUse: "Ligh
     else:
       return -1
 
+#Combining logistic regression, Naive_Bayes, SVM Classifier 
+#together:
+
+#Get the counters:
+spam_words = Counter()
+for msg in words:
+  spam_words.update(msg)
+
+
 
 
 
