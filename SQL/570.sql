@@ -7,3 +7,5 @@ SELECT ManagerId
 FROM Employee GROUP BY ManagerId
 HAVING COUNT(ManagerId) >= 5
 );
+
+
