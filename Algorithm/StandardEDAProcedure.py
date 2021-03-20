@@ -101,5 +101,3 @@ from math import sqrt
 
 
 
-
-
