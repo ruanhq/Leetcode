@@ -10,3 +10,6 @@ class Solution:
     	for idx, val in enumerate(arr):
     		arr[idx] = hashSet[val]
     	return arr
+
+#Get the rank of the list.
+
