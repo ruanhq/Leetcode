@@ -49,6 +49,56 @@ def giniIndexEvaluation(y_true, y_pred):
   G_true = np.sum(L_mid - L_true)
   return G_pred/ G_true
 
+#Calculate the missing statistics from the dataframe:
+def missingValueTable(df):
+  missStats = df.isnull().sum()
+  missPercent = 100 * df.isnull().sum()/ len(df)
+  missValTable = pd.DataFrame(zip(missStats, missPercent), columns = ["missingValues", "missingPercentage"]).sort_values("missingValues", ascending = False)
+  missValTableMissingOnly = missValTable[missValTable.iloc[:, 1] != 0]
+  print("The select dataframes has {0} features with missing values".format(len(missValTableMissingOnly)))
+  return missValTableMissingOnly
+
+def dropConstantCols(df):
+  distinctValues = df.apply(lambda X: len(X.unique()))
+  for i in distinctValues.keys()[np.where(distinctValues == 1)]:
+    df = df.drop(i, axis = 1)
+  return df
+
+#label encoding of the key value pairs, for continuous response
+def label_encoding(df, list_of_categories, limitMaxValue = True, responseCol):
+  for i in list_of_categories:
+    col = i
+    colDistribution = df.groupby([col])[responseCol].sum().reset_index().sort_values([responseCol], ascending = False)
+    mapping_col_name = colDistribution[col]
+    if(limitMaxValue == True):
+      mapping_col_value = list(range(list_of_categories[i], 0, -1))
+      mapping_col_value.extend([1 for val in range(df[col].nunique() - list_of_categories[col], 0, -1)])
+    else:
+      mapping_col_value = list(range(df[col].nunique(), 0, -1))
+    mappingDict = dict(zip(mapping_col_name, mapping_col_value))
+    mappingDict['Other'] = 1
+    df[col] = [mappingDict[v] for v in df[col] if v in mappingDict]
+  return df
+
+#label-encoder, 
+X_cat = X.select_dtypes(include = ['object'])
+#Perform simulation for the specific dataset:
+
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, confusion_matrix
+from math import sqrt
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
