@@ -89,9 +89,15 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 from math import sqrt
 
 
+#platt scaling for calibration:
+import numpy as np 
+import seaborn as sns
+from sklearn.linear_model import LogisticRegression
+clf = LogisticRegression()
+clf.fit(X_train, y_train)
 
-
-
+#Starting from the ones:
+#Calibration_curve(y_test, y_test_predict_proba, n_bins = 10)
 
 
 
