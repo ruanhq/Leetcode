@@ -6,3 +6,4 @@ class Solution:
             cost[i] += min(cost[i - 2], cost[i - 1])
         return min(cost[n - 2], cost[n - 1])
 
+
