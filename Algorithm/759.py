@@ -16,3 +16,4 @@ class Solution:
             freeList.append(Interval(start = mergedInterval[i - 1].end, end = mergedInterval[i].start))
         return freeList
 
+        

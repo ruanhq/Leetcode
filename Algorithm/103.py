@@ -21,5 +21,4 @@ class Solution:
 
 #each of the level would be a queue and popleft the left
 #end element and then append its left/ right child.
-
-
+#That's why here you may want to use queue.

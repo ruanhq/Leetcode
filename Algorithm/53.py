@@ -8,3 +8,5 @@ class Solution:
             current_max = max(current_max + nums[i], nums[i])
             result = max(current_max, result)
         return result
+
+
