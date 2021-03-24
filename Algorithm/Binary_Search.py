@@ -13,6 +13,17 @@ def binary_search(arr, low, high, x):
 	else:
 		return -1
 
+def binarySearch(arr, low, high, x):
+  if high >= low:
+    mid = (low + high) // 2
+    if arr[mid] == x:
+      return mid
+    elif arr[mid] > x:
+      return binarySearch(arr, low, mid - 1, x)
+    else:
+      return binarySearch(arr, mid + 1, high, x)
+
+def binarySearch(arr, low, high, x)
 #bubble sort: n(best) -> n^2(average) -> n^2(worst)
 def bubbleSort(arr):
   n = len(arr)
