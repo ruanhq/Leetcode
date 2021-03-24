@@ -24,3 +24,37 @@ def binarySearch(arr, low, high, x):
     else:
         return binarySearch(arr, mid + 1, high, x)
 
+#Binary tree traversal:
+def preorder(root):
+  return [root.val] + preorder(root.left) + preorder(root.right) if root else []
+def inorder(root):
+  return  inorder(root.left) + [root.val] + inorder(root.right) if root else []
+def postorder(root):
+  return  postorder(root.left) + postorder(root.right) + [root.val] if root else []
+
+def inorder(root):
+    if root:
+    	return inorder(root.left) + [root.val] + inorder(root.right)
+    else:
+        return []
+
+def postorder(root):
+    if root:
+        return postorder(root.right) + postorder(root.left) + [root.val]
+    else:
+        return []
+
+
+
+def preorder(root):
+    if root:
+        return [root.val] + preorder(root.left) + preorder(root.right)
+    else:
+        return []
+
+
+
+
+
+
+
