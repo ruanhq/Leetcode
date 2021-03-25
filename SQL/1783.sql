@@ -16,3 +16,4 @@ Players INNER JOIN A1 ON Players.player_id = A1.player_id
 GROUP BY player_id, player_name;
 
 #union all: not remove duplicates, union: removing duplicates automatically.
+
