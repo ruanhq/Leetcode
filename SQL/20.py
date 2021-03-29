@@ -14,5 +14,3 @@ class Solution:
         return False
     return stacks == []
 
-
-
