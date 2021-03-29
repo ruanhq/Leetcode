@@ -20,3 +20,14 @@ on department_salary.pay_month = company_salary.pay_month
 #First use with to generate the intermediate tables and then merge them in
 #one query.
 
+
+
+SELECT
+    department_salary.pay_month,
+    department_id,
+    case
+        WHEN department_avg > company_avg THEN 'higher'
+        WHEN department_avg < company_avg THEN 'lower'
+        ELSE 'same'
+    END AS comparison
+FROM 

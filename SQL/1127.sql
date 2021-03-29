@@ -29,5 +29,14 @@ A3 LEFT JOIN A1
 ON A3.platform = A1.platform AND A3.spend_date = A1.spend_date
 GROUP BY spend_date, platform
 
+SELECT
+    price.col1 AS col1,
+    price.col2 AS col2,
+    price.col3 AS col3
+
+
+
+
+
 
 

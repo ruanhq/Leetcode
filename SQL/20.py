@@ -1,20 +1,18 @@
 #valid parenthesis: a typical first in first out structure.
+
 class Solution:
-  def isValid(self, s: str) -> bool:
-  	stack = []
-  	start_par = ["(", "[", "{"]
-  	maps = {'(': ')', '[': ']', '{': '}'}
-  	for i in range(len(s)):
-  		if s[i] in start_par:
-  			stack.append(s[i])
-  		if stack and maps[stack[-1]] == s[i]:
-  			stack.pop()
-  		else:
-  			False
-  	return not stack
-
-
-
+  def isValid(strings: str) -> bool:
+    stacks = []
+    leftParenthesis = ["(", "[", "{"]
+    mapList = {"(": ")", "[": "]", "{": "}"}
+    for num in strings:
+      if num in leftParenthesis:
+        stacks.append(num)
+      elif stacks and mapList[stacks[-1]] == num:
+        stacks.pop()
+      else:
+        return False
+    return stacks == []
 
 
 
