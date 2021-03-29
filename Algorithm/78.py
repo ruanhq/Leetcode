@@ -9,7 +9,3 @@ class Solution:
         return subsets
 
 #Recursive:
-class Solution:
-    def subsets(self, nums: List[int]) -> List[List[int]]:
-        subsets = [[]]
-        
