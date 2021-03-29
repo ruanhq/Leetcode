@@ -12,7 +12,6 @@ def numDecodings(self, s: str) -> int:
 				return 0
 		if string == "" or len(string) == 1:
 			return 1
-
 		if int(string[:2]) <= 26:
 			first = search(string[1:])
 			second = search(string[2:])
