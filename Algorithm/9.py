@@ -40,6 +40,18 @@ def reverseInteger(x: int) -> int:
 reverseInteger(1274)
 
 
+def reverseInteger(x: int) -> int:
+    newNumber = 0
+    while x > 0:
+        newNumber = newNumber * 10 + x % 10
+        x = x // 10
+    return newNumber
+
+
+
+
+
+
 
 
 
