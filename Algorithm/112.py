@@ -21,4 +21,4 @@ class Solution:
             return root.val == targetSum
         return search(root.left, targetSum - root.val) or search(root.right, targetSum - root.val)
     
-    
+
