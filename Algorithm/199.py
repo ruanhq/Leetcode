@@ -1,22 +1,20 @@
-#199. Binary Tree Right Side View:
-#using a queue for each of the layer and popleft eachtime to get the child which
-#in the next layer; 
-class Solution:
-    def rightSideView(self, root: TreeNode) -> List[int]:
-        if root is None:
-            return []
-        result = []
-        this_level_nodes = deque([root])
-        while this_level_nodes:
-            current_level = this_level_nodes
-            this_level_nodes = deque()
-            while current_level:
-                node = current_level.popleft()
-                if node.left:
-                    this_level_nodes.append(node.left)
-                else:
-                    this_level_nodes.append(node.right)
-            result.append(node.val)
-        return result
+#199. Binary Tree Right Side View
 
+from collections import deque
+class Solution(object):
+    def rightSideView(self, root):
+        if not root:
+            return []
+        currentLayerQueue = deque()
+        currentLayerQueue.append(root)
+        result = []
+        while currentLayerQueue:
+            for _ in range(len(currentLayerQueue)):
+                currentNode = currentLayerQueue.popleft()
+                if currentNode.left:
+                    currentLayerQueue.append(currentNode.left)
+                if currentNode.right:
+                    currentLayerQueue.append(currentNode.right)
+            result.append(currentNode.val)
+        return result
 
