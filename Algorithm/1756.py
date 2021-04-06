@@ -36,4 +36,20 @@ class MRUQueue(object):
 self.sl.add((lastItemHelper + 1, item))
 return item
 
-#Usage of SortedList
+#Stack/ Queue related data structures:
+SortedList((i - 1, i) for i in range(1, 1000))\
+defaultdict(int)
+defaultdict(list)
+dict()
+orderedDict()
+defaultdict(int)
+defaultdict(list)
+dict()
+orderedDict()
+SortedList((i - 1, i) for i in range(1, 1000))
+
+
+
+
+
+

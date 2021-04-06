@@ -39,12 +39,41 @@ class Solution:
             if node.right:
                 LeavesAppend(node.right)
         if is_leaf(node):
-            
+
 
         leftBoundary(root.left, boundaryResult)
         leavesAppend(root, boundaryResult)
         rightBoundary(root.right, boundaryResult)
         return boundaryResult
+
+#####
+def is_leaf(node: TreeNode):
+    if not node:
+        return False
+    if node and not node.left and not node.right:
+        return True
+
+
+def is_leaf(node: TreeNode):
+    if not node:
+        return False
+    if node and not node.left and not node.right:
+        return
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
