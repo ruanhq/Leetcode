@@ -15,3 +15,6 @@ class Solution:
 
         return matrix
 
+
+class Solution:
+    
