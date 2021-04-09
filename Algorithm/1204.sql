@@ -1,0 +1,50 @@
+#find the person name of the last person who will fit in the elevator without
+#exceeding the weight limit:
+
+SELECT person_name
+FROM
+(SELECT person_name, SUM(WEIGHT) OVER (ORDER BY turn ASC) AS weight_SUM
+FROM Queue
+ORDER BY weight_SUM ASC) AS A1
+WHERE weight_SUM <= 1000
+ORDER BY weight_SUM DESC
+LIMIT 1;
+
+#SELECT LEAD(COL1, 1) OVER (PARTITION BY A1 ORDER BY A4 DESC)
+#SELECT LAG(COL1, 1) OVER (PARTITION BY A2 ORDER BY A3 DESC)
+#SELECT LEAD(COL1, 2) OVER (PARTITION BY A1 ORDER BY A2 DESC)
+#SELECT LAG(COL1, 2) OVER (PARTITION BY A2 ORDER BY A1 DESC)
+#SELECT SUM(COL1) OVER (PARTITION BY A3 ORDER BY A0 DESC)
+#SELECT LEAD(col1, 1) OVER (PARTITION BY A1 ORDER BY A2 DESC)
+#SELECT LAG(col1, 1) OVER (PARTITION BY A2 ORDER BY A3 DESC)
+#SELECT LAG(col1, 1) OVER (PARTITION BY A2 ORDER BY A3 DESC)
+#SELECT LEAD(col1, 1) OVER (PARTITION BY A4 ORDER BY A5 DESC)
+#SELECT LAG(col1, 1) OVER (PARTITION BY A6 ORDER BY A7 DESC)
+#SELECT DENSE_RANK() OVER (PARTITION BY A7 ORDER BY A8 DESC)
+#SELECT RANK() OVER (PARTITION BY A8 ORDER BY A9 DESC)
+#SELECT SUM(COL1) OVER (PARTITION BY A10 ORDER BY A11 DESC)
+#SELECT SUM(col1) OVER (PARTITION BY A12 ORDER BY A13 DESC)
+
+#!/bin/bash
+read -p "SSSS:" num1 num2
+a = $num1
+b = $num2
+if [ "echo "$a" | sed -r 's/[^0-9]//g'"="$a"];
+
+
+
+sum = 0
+for i in {1:100}
+do let sum += i
+done 
+echo `seq -s "+" 100 `"="$sum
+echo `seq -s "+" 100 `"="$sum
+wc -L 
+
+
+
+
+
+
+
+
