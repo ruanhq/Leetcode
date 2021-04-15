@@ -1,6 +1,7 @@
 #11. Container with most water:
 #As this would be the area, not only the distance between lines,
 #you may want to work closely with the pointers.
+#Two pointers from both end of the list:
 class Solution:
     def maxArea(self, height: List[int]) -> int:
         left = 0
@@ -13,6 +14,7 @@ class Solution:
             else:
                 left += 1
         return result
+#O(n)
 
 #The array has been sorted in increasing order.
 def binarySearch(arr, low, high, x):
@@ -51,6 +53,65 @@ def preorder(root):
         return [root.val] + preorder(root.left) + preorder(root.right)
     else:
         return []
+
+
+def preorder(root):
+    if root:
+        return [root.val] + preorder(root.left) + preorder(root.right)
+    else:
+        return []
+
+def preorderTraversal(self, root):
+    result = []
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        if node:
+            result.append(node.val)
+            stack.append(node.left)
+            stack.append(node.right)
+    return result
+
+def postorderTraversal(self, root):
+    result = []
+    stack = [root]
+    while stack:
+        node = stack.pop()
+        if node:
+            result.append(node.val)
+            stack.append(node.right)
+            stack.append(node.left)
+    return result[::-1]
+
+
+
+def inorderTraversal(self, root):
+    result, stack = [], []
+    while True:
+        while root:
+            stack.append(root)
+            root = root.left
+            if not stack:
+                return result
+            node = stack.pop()
+            result.append(node.val)
+            stack.append(node.right)
+
+def inorderTraversal(self, root):
+    result, stack = [], []
+    while True:
+        while root:
+            stack.append(root)
+            root = root.left
+            if not stack:
+                return result
+            node = stack.pop()
+            result.append(node.val)
+            stack.append(node.right)
+
+
+    
+
 
 
 
