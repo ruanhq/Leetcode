@@ -1,14 +1,17 @@
 #71. Simplify path, just stack.
+#Canonical Path here.
 class Solution:
     def simplifyPath(self, path: str) -> str:
-        pathStack = []
-        directoryList = path.split("/")
-        for slices in directoryList:
-            if slices == ".." and pathStack:
-                pathStack.pop()
-            elif slices == "." or not slices:
+        resultList = path.split("/")
+        currentListStack = []
+        for c in resultList:
+            if c == "..":
+                if currentListStack:
+                    currentListStack.pop()
+            elif c == "." or not c:
                 continue
             else:
-                pathStack.append(slices)
-        result = "/" + "/".join(pathStack)
+                currentListStack.append(c)
+        result = "/" + str("/".join(currentListStack))
         return result
+

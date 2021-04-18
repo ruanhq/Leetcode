@@ -29,7 +29,7 @@ class Solution:
         return dummyNode.next
 #If return head, for the one-element linked list, it may not work anymore.
 #So you may need to create a dummyNode to connect to the head.
-
+#Construct a dummynode at the start of the linked list!
 
 
 

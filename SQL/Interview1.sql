@@ -334,7 +334,9 @@ where date(r.time) = "XXX" and date(a.time) = "XXX";
 
 
 
-
+SELECT COUNT(DISTINCT A.request_id)/ COUNT(DISTINCT R.sender_id) AS acc
+FROM request r, accept a 
+DATEDIFF(loan_date, pay_time)
 
 
 
