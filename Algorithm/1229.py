@@ -58,26 +58,6 @@ heapq.heapreplace(li2, 10)
 heapq.nlargest(2, li2)
 heapq.nsmallest(3, li2)
 heapq._heapify_max(li2)
-li2
 ctSorted = sorted(Counter(S).items(), key = lambda X: X[1], reverse = True)
-
-if value > (1 + n)/ 2
-
-
-
-#deep-copy of the list:
-from heapq import heapify
-li2 = [5, 7, 9, 3, 4]
-heapq.heapify(li2)
-heapq._heapify_max(li2)
-
-
-class Node:
-def __init__
-
-
-
-
-
 
 
