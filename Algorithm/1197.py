@@ -1,6 +1,5 @@
 #1197. Minimum Knight Moves:
-import functools
-import numpy as np 
+
 class Solution(object):
     def minKnightMoves(self, x, y):
         def dfItera(x, y):
@@ -10,8 +9,6 @@ class Solution(object):
                 return 2
             if x + y == 1:
                 return 3
-            s1 = min(dfItera(np.abs(x - 1), np.abs(y - 2)),
-            dfItera(np.abs(x - 2), np.abs(y - 1)))
-            return s1
+            return min(dfItera(x - 1, y - 2), dfItera(x - 2, y - 1)) + 1
         return dfItera(np.abs(x), np.abs(y))
-
+        

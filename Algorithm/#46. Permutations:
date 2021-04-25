@@ -1,0 +1,36 @@
+#46. Permutations:
+class Solution(object):
+    def permute(self, nums):
+        result = []
+        def searching(k):
+            if k == len(nums):
+                result.append(nums[:])
+            for i in range(k, len(nums)):
+                nums[i], nums[k] = nums[k], nums[i]
+                searching(k + 1)
+                nums[i], nums[k] = nums[k], nums[i]
+        n = len(nums)
+        searching(0)
+        return result
+
+
+
+
+#Linkedin HighFrequency Questions:
+import requests
+
+url = 'https://github.com/CapitalOneRecruiting/DS/blob/master/transactions.zip'
+r = requests.get(url)
+# open method to open a file on your system and write the contents    
+with open("file.zip", "wb") as code:
+    code.write(r.content)
+
+#calculate the product without current number:
+def productWithoutCurrent()
+
+
+#naive bayes:
+class NaiveBayes(object):
+	def __init__(self, ):
+
+    def calculatePrior()
