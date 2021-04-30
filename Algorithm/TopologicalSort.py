@@ -26,7 +26,21 @@ class Solution(object):
                     SourceVertexList.append(v)
         return len(result) == numCourses
 
-
+class Graph():
+    def __init__(self, nNode):
+        self.graph = defaultdict(list)
+        self.nNode = nNode
+    def constructLink(self, u, v):
+        self.graph[u].append(v)
+    def topologicalSort(self):
+        inDegree = {v: 0 for v in range(self.nNode)}
+        SourceVertexList = []
+        result = []
+        for i in range(self.nNode):
+            for v in self.graph[i]:
+                parent, child = i, v
+                inDegree[child] += 1
+        for i in 
 #assume max(u, v) = n,
 #each of the u, v represent a number between 0 and n.
 class Graph():
@@ -73,6 +87,7 @@ G1.constructLink(6, 2)
 G1.constructLink(7, 2)
 G1.constructLink(5, 1)
 G1.constructLink(4, 5)
+G1.constructLink(5, 2)
 G1.topologicalSort()
 
 #may need to try different imbalanced ratio here.
