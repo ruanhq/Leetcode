@@ -23,3 +23,15 @@ for index, element in enumerate(lists):
         result = min(result, index2 - index1)
 return result
 
+
+
+
+
+
+
+
+#Kmeans:
+
+def kmeans(df, k):
+    kmeans1 = 
+    np.argmin(squareform(pdist(df)))
