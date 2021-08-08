@@ -2,6 +2,9 @@
 #
 #
 
+SELECT date,
+
+
 SELECT date, 
 ROUND(IFNULL(SUM(CASE WHEN event = 'post' THEN 1 ELSE 0 END)/
 SUM(CASE WHEN event = 'enter' THEN 1 ELSE 0 END), 0), 2) AS success_date
@@ -42,6 +45,13 @@ review_removals R
 ON U.post_id = R.post_id
 GROUP BY U.date, U.user_id;
 
+SELECT U.date, U.user_id,
+COUNT(review_id)/ COUNT(DISTINCT U.post_id) AS percentage
+FROM user_actions U 
+LEFT JOIN 
+review_removals R
+ON U.post_id = R.post_id
+GROUP BY U.date, U.user_id;
 
 #session level data:
 #(user, group, time, displays, click) for a payment page.
@@ -109,7 +119,23 @@ sum(case when event = 'imp' then 1 else 0 end) as answer_rate
 from survey_log 
 group by 1
 order by 2 desc 
-limit 1;
+limit 1
+
+
+
+select question_id, SUM(CASE WHEN event = 'answered' THEN 1 ELSE 0 END)/
+SUM(CASE WHEN event = 'imp' THEN 1 ELSE 0 END) AS answer_rate
+FROM survey_log
+GROUP BY 1
+ORDER BY 2 DESC 
+LIMIT 1;
+
+SELECT COUNT(DISTINCT A.request_id)/ COUNT(DISTINCT R.sender_id) AS acceptance_rate
+FROM request R,
+accept A 
+WHERE date(R.time) = date(A.time);
+
+
 
 
 select count(distinct a.request_id)/ count(distinct r.sender_id) as 
@@ -222,6 +248,7 @@ group by 1
 order by 1;
 
 
+#How could you estimate the 
 
 
 hashMap = {}
@@ -263,6 +290,11 @@ datediff(curdate(), date) <= 30
 date(R.time) = "XXX"
 t1.user_id, t1.unit_id
 
+metrics, AAREM -> AAREM?
+datediff(curdate(), date) <= 30
+date(R.time) = "XXX"
+T1.user_id, T1.unit_id
+
 #ad4ad: date, user_id, event(impression, click, create_ad),
 #unit_id, cost, spend
 #users: user_id, country, age
@@ -294,6 +326,19 @@ from adv_info
 group by 1
 ) A 
 #negative binomial/ log-normal
+
+SELECT avg(tot_spend) AS avg_advsr_spnt
+FROM
+(
+SELECT advertiser_id, sum(spend) AS tot_spend
+FROM adv_info
+GROUP BY 1
+) A
+
+#Identify the elder people from the transaction datalist:
+
+
+
 
 adv_info: advertiser_id | ad_id | spend  -> each advertiser_id represent an ad.
 ad_info: ad_id | user_id | price 
@@ -337,6 +382,89 @@ where date(r.time) = "XXX" and date(a.time) = "XXX";
 SELECT COUNT(DISTINCT A.request_id)/ COUNT(DISTINCT R.sender_id) AS acc
 FROM request r, accept a 
 DATEDIFF(loan_date, pay_time)
+
+
+
+#defining problems and make assumptions:
+-> break it down and think about edge cases, if G drops down,
+it could be any one of the following three drops:
+#抽样调查.
+experience + coding(merge two sorted list):
+case study(model, metric, visualization, problem spotting)
+machine learning(probability, tree, regularization, tuning)
+residual correlated: how does it affect your modeling? 
+How to deal with multicolinearity? How to detect the VIF(Variance Inflation Factor)
+
+
+#Residual distribution, what if residues are correlated?
+
+#What if residues are s
+
+pure heteroscedasticity refers to cases where you specify the correct model
+and yet you observe non-constant variance 
+
+
+#Estimators are no longer best/efficient. The test of hypothesis are no
+#longer valid due to the inconsistency in the covariace matrix of the 
+#estimated regression coefficients.
+
+#Breaking this assumption means the OLS are not BLUE(their variance is not
+#lowest of all other unbiased estimators).
+
+
+#Comparing the conversion rates:
+#Two versions of UIs.
+
+#model, metric, visualization/ 问题定位等.
+#controlling the depth of the random forest.
+#Minimize both error due to bias and error due to variance.
+#Enter random forests, mitigate this problem well.
+#A random forest is simply a collection of decision trees whose
+#results are aggregated into one final result.
+
+#Paired/ unpaired t-test:
+compute the averages/ means of two independent or unrelated groups to 
+determine if there is a significant difference between the two.
+
+multinomial, ordinal logistic regression.
+
+each prediction it makes on the validation set would in
+essence be the fare of some taxi ride in our training data that
+ended up in the same final leaf node as the ride whose fare we 
+are predicting. This overfitting, however, also results in unacceptably 
+high variance and consequently poor predictions on unseen data.
+
+#models, metrics, visualizations/ spotting the problems.
+cross-entropy/softmax -> loss function.
+
+#Create a dummyNode here:
+dummyNode = current = ListNode(0)
+while l1 and l2:
+    if l1.val < l2.val:
+        current.next = l1
+        l1 = l1.next
+    else:
+        current.next = l2
+        l2 = l2.next
+    current = current.next 
+if l1:
+    current.next = l1
+if l2:
+    current.next = l2
+return dummyNode.next
+
+
+#Assumptions:
+
+def outputFIrstNElementFibonacci(n):
+
+
+
+
+
+
+
+
 
 
 

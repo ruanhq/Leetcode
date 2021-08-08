@@ -34,6 +34,14 @@ while not q.empty():
         q.put((node.val, node))
 return head.next
 
+while not q.empty():
+    val, node = q.get()
+    point.next = ListNode(val)
+    point = point.next 
+    node = node.next 
+    if node:
+        q.put((node.val, node))
+return head.next
 
 
 

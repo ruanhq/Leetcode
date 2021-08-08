@@ -8,7 +8,7 @@ def shortestDistance(wordsDict: List[str], word1: str, word2: str):
             result = min(index1 - index2, result)
         elif word == word2:
             index2 = index 
-            result = min(inred2 - index1, result)
+            result = min(index2 - index1, result)
     return result
 
 
@@ -23,6 +23,17 @@ for index, element in enumerate(lists):
         result = min(result, index2 - index1)
 return result
 
+def shortestDistance(wordsDict: List[str], word1: str, word2: str):
+    result = 10000000
+    index1 = index2 = 0
+    for index, word in enumerate(wordsDict):
+        if word == word1:
+            index1 = index
+            result = min(index1 - index2, result)
+        elif word == word2:
+            index2 = index
+            result = min(index2 - index1, result)
+    return result
 
 
 def getFactors(self, n):
@@ -56,7 +67,23 @@ def permutations(self, list1):
     backtracking(result, [], list1)
     return result
 
+def recalculateCentroids()
 
+def reAssignCentroids()
+
+def permutations(self, list1):
+    def backtracking(result, temper, list1):
+        if len(temper) == len(list1):
+            result.append(temper[:])
+        for i in range(len(list1)):
+            if list1[i] in temper:
+                continue
+            temper.append(list1[i])
+            backtracking(result, temper, list1)
+            temper.pop()
+    result = []
+    backtracking(result, [], list1)
+    return result
 
 
 

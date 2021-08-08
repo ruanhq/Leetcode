@@ -35,10 +35,7 @@ for i in range(len(shap_values)):
 dfShapley = cur_df.reset_index(drop = True)
 dfOrg = df4[["b2c_order_id", "result", "date"]].reset_index(drop = False)
 resultDF = pd.merge(dfShapley, dfOrg, on = ["index"])
-shap.force_plot()
 resultDF.to_csv("ShapleyValuePrediction.csv")
-
-
 
 
 

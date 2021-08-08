@@ -1,58 +1,30 @@
-#226. Invert Binary Tree:
+#226.Invert Binary Tree:
 class Solution:
-	def invertTree(self, root: TreeNode) -> TreeNode:
-		if root:
-			root.left, root.right = self.invertTree(root.right),
-			self.invertTree(root.left)
-		return root
-
-#BFS:
-class Solution:
-	def invertTreeMethod2(self, root: TreeNode) -> TreeNode:
-		queue = collections.deque([(root)])
-		while queue:
-			node = queue.popleft()
-			if node:
-				node.left, node.right = node.right, node.left
-				queue.append(node.left)
-				queue.append(node.right)
-		return root
-
-#DFS
-class Solution:
-	def invertTreeMethod3(self, root: TreeNode) -> TreeNode:
-		stack = [root]
-		while stack:
-			node = stack.pop()
-			if node:
-				node.left, node.right = node.right, node.left
-				stack.extend([node.right, node.left])
-		return root
-
-
-
-queu = collections.deque(["A1", "A2", "A3", "A4", "A5"])
-queu.popleft()
-
-stack = ["A1", "A2", "A3", "A4", "A5"]
-stack.pop()
-stack.extend(["A6", "A7"])
-stack
+    def invertTree(self, root: TreeNode):
+        if root is None:
+            return None
+        root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
+        return root
 
 
 class Solution:
-	def invertTreeMethod3(self, root: TreeNode) -> TreeNode:
-		stack = [root]
-		while stack:
-			node = stack.pop()
-			if node:
-				node.left, node.right = node.right, node.left
-				stack.append(node.left)
-				stack.append(node.right)
-		return root
+    def invertTree(self, root: TreeNode):
+        if root is None:
+            return None
+        root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)
+        return root
 
 
 
-
-
-
+class Solution:
+    def permute(self, nums):
+        result = []
+        def searching(m):
+            if m == len(nums):
+                result.append(nums[:])
+            for i in range(m, len(nums)):
+                nums[i], nums[m] = nums[m], nums[i]
+                searching(m + 1)
+                nums[i], nums[m] = nums[m], nums[i]
+        searching(0)
+        return result
